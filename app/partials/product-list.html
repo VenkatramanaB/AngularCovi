@@ -1,0 +1,78 @@
+
+
+<div class="col-md-12 title">
+ <b>Masalas & Spices  :({{products.length}}   Items)</b>
+</div>
+<div class="col-md-12"> 
+  <div class="col-md-8"> 
+    <div ng-repeat="product in products">
+      <div class="border-t-b-l-rr">
+        <a href="#/product/{{product.p_id}}"><img ng-src= "{{product.imageUrl}}" alt="{{product.p_name}}"></a>
+        <div class="pro">{{product.p_name}}</div>
+        <div class="pro">{{product.c_currency}} {{product.p_originalprice}}</p>
+          <button ng-click="addProduct(product)" ng-hide="product.isSelected">ADD CART</button>
+          <div ng-show="product.isSelected">
+            QTY : <input type="number" ng-model="product.p_quantity" ng-change="updatePrice(product)" min="0" max="10"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-4 border-t-b-l-r"> 
+    <div class="col-md-12 bill">
+      <h3>Your Card Summary</h3>
+      <div class="col-md-6">
+        <h6>Items in card</h6>
+      </div>
+      <div class="col-md-6">
+        <h6>Total Price</h6>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="col-md-6">
+       <b> {{selectedProductLength}}</b>
+     </div>
+     <div class="col-md-6">
+      <h4>{{totalPrice}}.00</h4>
+    </div>
+    <div class="col-md-12 seperator"></div>
+
+    <div class="col-md-4">
+      <h6>Items</h6>
+    </div>
+    <div class="col-md-4">
+      <h6>Qunatity</h6>
+    </div>
+    <div class="col-md-4">
+      <h6>Total Rs.</h6>
+    </div>
+    <div ng-repeat="product in products | filter:{isSelected:true}">
+      <div class="col-md-12">
+        <div class="col-md-4">
+          <div >
+            <b >{{product.p_name}}</b>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div>
+            <input id="check" type="number" ng-model="product.p_quantity" ng-change="updatePrice(product)" min="0" max="10"/> 
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div >
+            <h6>Rs. {{product.p_quantity*product.p_originalprice}}.00</h6>
+            <a ng-click="removeFromSelected(product)">REMOVE</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+

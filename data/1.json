@@ -1,0 +1,10 @@
+{  
+      "p_id":1,
+      "p_name":"Coriander",
+      "isSelected": false,
+      "imageUrl":"images/coriander.jpeg",
+      "p_quantity":0,
+      "p_originalprice":"11.00",
+      "p_price":"11.00",
+      "c_currency":"Rs."
+      }
